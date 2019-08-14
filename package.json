@@ -1,0 +1,65 @@
+{
+  "name": "ts-lib",
+  "version": "0.0.0",
+  "description": "A typescript library template",
+  "main": "lib/main.js",
+  "author": "forellana@digithinkit.com",
+  "license": "MIT",
+  "types": "dist/main.d.ts",
+  "typings": "dist/main.d.ts",
+  "scripts": {
+    "prepare": "yarn build",
+    "build": "tsc",
+    "test": "jest",
+    "commit": "git-cz"
+  },
+  "files": [
+    "lib"
+  ],
+  "jest": {
+    "transform": {
+      "^.+\\.tsx?$": "ts-jest"
+    },
+    "moduleFileExtensions": [
+      "tsx",
+      "ts",
+      "jsx",
+      "js"
+    ],
+    "testRegex": "^.+\\.spec\\.tsx?$",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/test/"
+    ]
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^8.1.0",
+    "@commitlint/config-conventional": "^8.1.0",
+    "@types/jest": "^24.0.17",
+    "@types/node": "^12.7.1",
+    "commitizen": "^4.0.3",
+    "cz-conventional-changelog": "3.0.2",
+    "husky": "^3.0.3",
+    "jest": "^24.8.0",
+    "ts-jest": "^24.0.2",
+    "typescript": "^3.5.3"
+  },
+  "dependencies": {},
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm test",
+      "pre-push": "npm test",
+      "prepare-commit-msg": "exec < /dev/tty && yarn commit --hook || true"
+    }
+  }
+}
